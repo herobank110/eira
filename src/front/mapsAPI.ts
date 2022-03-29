@@ -1,7 +1,6 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
-// const apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
-const apiKey = "ikashdkajshdajk";
+const apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
 let g_API: typeof google.maps | undefined = undefined;
 
 export async function getMapsAPI() {
