@@ -4,19 +4,24 @@ import { getMapsAPI } from "./mapsAPI";
 import tippy, { followCursor } from "tippy.js";
 import "tippy.js/dist/tippy.css"; // optional for styling
 setTimeout(() => {
-  let a = tippy(document.body, {
+  const el = document.createElement("div");
+  el.style.position = "absolute";
+  el.style.top = "200px";
+  el.style.left = "200px";
+  el.style.width = "20px";
+  el.style.height = "20px";
+  el.style.background = "red";
+  document.body.append(el);
+  let a = tippy(el, {
     followCursor: true,
     content: "hello there",
     plugins: [followCursor],
     showOnCreate: true,
-    placement: "bottom",
-    offset: [0, 20],
-    // arrow: false
   });
-  const el = document.getElementById("tippy-" + a.id);
-  setTimeout(() => {
-  el.style.transform = "translate3d(100px, 100px, 0px)"
-  }, 0)
+  // const el = document.getElementById("tippy-" + a.id);
+  // setTimeout(() => {
+  // el.style.transform = "translate3d(100px, 100px, 0px)"
+  // }, 0)
 
   console.log(el);
   // console.log('di', el.getBoundingClientRect());
