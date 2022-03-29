@@ -1,7 +1,27 @@
 import { cardiff } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
-main();
+import tippy, { followCursor } from "tippy.js";
+import "tippy.js/dist/tippy.css"; // optional for styling
+import "tippy.js/animations/scale.css";
+// document.getElementById("mybutton").addEventListener("mouseover", () => {
+setTimeout(() => {
+  let a = tippy(document.body, {
+    followCursor: true,
+    content: "hello there",
+    plugins: [followCursor],
+    // showOnCreate: true,
+  });
+  setTimeout(a.show, 10)
+//   a.reference.set
+  console.log(a);
+//   a.show();
+  setTimeout(a.destroy, 2000);
+}, 2000);
+//   console.log("tooltip", a);
+// });
+
+// main();
 
 async function main() {
   const mapsAPI = await getMapsAPI();
