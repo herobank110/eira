@@ -9,6 +9,7 @@ async function main() {
   const map = new mapsAPI.Map(document.getElementById("map-root"), {
     center: cardiff.center,
     zoom: cardiff.zoom,
+    mapId: "3f60a325ef504f09",
   });
 
   const marker = new mapsAPI.Marker({
