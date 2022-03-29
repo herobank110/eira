@@ -12,10 +12,10 @@ async function main() {
   ["lng", "lat", "zoom"].map((s) => {
     document.getElementById(s).onchange = () => {
       map.setCenter({
-        lng: document.getElementById("lng").value,
-        lat: document.getElementById("lat").value,
+        lng: parseFloat(document.getElementById("lng").value),
+        lat: parseFloat(document.getElementById("lat").value),
       });
-      map.setZoom(document.getElementById("zoom").value);
+      map.setZoom(parseFloat(document.getElementById("zoom").value));
     };
   });
 }
