@@ -3,20 +3,24 @@ import { getMapsAPI } from "./mapsAPI";
 
 import tippy, { followCursor } from "tippy.js";
 import "tippy.js/dist/tippy.css"; // optional for styling
-import "tippy.js/animations/scale.css";
-// document.getElementById("mybutton").addEventListener("mouseover", () => {
 setTimeout(() => {
   let a = tippy(document.body, {
     followCursor: true,
     content: "hello there",
     plugins: [followCursor],
-    // showOnCreate: true,
+    showOnCreate: true,
+    placement: "bottom",
+    offset: [0, 20],
+    // arrow: false
   });
-  setTimeout(a.show, 10)
-//   a.reference.set
-  console.log(a);
-//   a.show();
-  setTimeout(a.destroy, 2000);
+  const el = document.getElementById("tippy-" + a.id);
+  setTimeout(() => {
+  el.style.transform = "translate3d(100px, 100px, 0px)"
+  }, 0)
+
+  console.log(el);
+  // console.log('di', el.getBoundingClientRect());
+  // setTimeout(a.destroy, 2000);
 }, 2000);
 //   console.log("tooltip", a);
 // });
