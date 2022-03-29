@@ -2,7 +2,7 @@ import { cardiff } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
 import tippy, { followCursor } from "tippy.js";
-import "tippy.js/dist/tippy.css"; // optional for styling
+import "tippy.js/dist/tippy.css";
 setTimeout(() => {
   let a = tippy(document.body, {
     followCursor: true,
@@ -11,19 +11,13 @@ setTimeout(() => {
     showOnCreate: true,
     placement: "bottom",
     offset: [0, 20],
-    // arrow: false
+    arrow: false,
   });
   const el = document.getElementById("tippy-" + a.id);
   setTimeout(() => {
-  el.style.transform = "translate3d(100px, 100px, 0px)"
-  }, 0)
-
-  console.log(el);
-  // console.log('di', el.getBoundingClientRect());
-  // setTimeout(a.destroy, 2000);
+    el.style.transform = "translate3d(100px, 100px, 0px)";
+  }, 0);
 }, 2000);
-//   console.log("tooltip", a);
-// });
 
 // main();
 
