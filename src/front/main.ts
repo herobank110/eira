@@ -19,4 +19,11 @@ async function main() {
   marker.addListener("click", () => console.log("click"));
   marker.addListener("mouseover", () => console.log("mouseover"));
   marker.addListener("mouseout", () => console.log("mouseout"));
+  const m2 = new mapsAPI.Marker({
+    map,
+    position: { lng: -3.18, lat: 51.4648 },
+  });
+  m2.addListener("click", () => console.log("click"));
+  m2.addListener("mouseover", () => console.log("mouseover"));
+  m2.addListener("mouseout", () => console.log("mouseout"));
 }
