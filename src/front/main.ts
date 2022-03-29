@@ -1,1 +1,6 @@
-document.body.innerHTML = "<h1>Hello 3!</h1>";
+import { getMapsAPI } from "./mapsAPI";
+
+getMapsAPI().then((maps) => {
+  console.log("maps:", maps);
+});
+    
