@@ -4,7 +4,7 @@
   "description": "cardiff landmarks map + rss",
   "scripts": {
     "start": "parcel --cache-dir=build/cache --dist-dir=build/front src/front/index.html",
-    "build": "parcel build --cache-dir=build/cache --dist-dir=build/front --public-url=. src/front/index.html"
+    "build": "node scripts/build.js"
   },
   "author": "",
   "license": "ISC",
