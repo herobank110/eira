@@ -6,6 +6,7 @@
     "start": "parcel --cache-dir=build/cache --dist-dir=build/front src/front/index.html",
     "build": "node scripts/build.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
