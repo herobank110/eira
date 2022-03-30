@@ -1,7 +1,7 @@
 import fsExtra from "fs-extra";
 import path from "path";
 import { REPO_ROOT } from "./constants.js";
-import { exec } from "./utils.js";
+import { exec } from "./buildUtils.js";
 
 const build = path.join(REPO_ROOT, "build");
 const cache = path.join(build, "cache");
