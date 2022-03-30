@@ -4,19 +4,23 @@ import { getOrCreateMap, setMapView } from "./mapControls";
 import { addMarker } from "./markerControl";
 
 export async function initGUI() {
-  bindReset();
+  const [map, landmarks] = await Promise.all([
+    getOrCreateMap(), // setup google maps widget
+    getLandmarks(), // fetch our landmarks
+  ]);
+
+  // navbar controls
+  bindButtonReset();
+  populateLandmarksList(landmarks);
   setRSSFeedURL();
-  populateLandmarksList();
 
-  const map = await getOrCreateMap();
-
-  const landmarks = await getLandmarks();
+  // prepare map for use
   for (const landmark of landmarks) {
     addMarker(map, landmark);
   }
 }
 
-function bindReset() {
+function bindButtonReset() {
   $("#buttton-reset").on("click", () => {
     setMapView(cardiff.center, cardiff.zoom);
   });
@@ -26,15 +30,15 @@ function setRSSFeedURL() {
   $("#rss-url").text(window.location.origin + "/api/rss.php");
 }
 
-function populateLandmarksList() {
+function populateLandmarksList(landmarks: Landmark[]) {
   const el = $("#landmarks-list");
   el.append(
-    ...[1, 2, 3].map((i) =>
+    ...landmarks.map((i) =>
       $("<li>").append(
         $("<button>", {
           class: "dropdown-item",
-          text: "Action " + i,
-        }).on("click", () => console.log("hi", i))
+          text: i.name,
+        }).on("click", () => travelToLandmark(i))
       )
     )
   );
