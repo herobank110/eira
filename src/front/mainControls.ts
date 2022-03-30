@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { resetMapView, travelToLandmark } from "./commonControls";
 import { cardiff, getLandmarks, Landmark } from "./eiraAPI";
 import { getOrCreateMap, setMapView } from "./mapControls";
 import { addMarker } from "./markerControl";
@@ -41,13 +42,4 @@ function populateLandmarksList(landmarks: Landmark[]) {
       )
     )
   );
-}
-
-function resetMapView() {
-  setMapView(cardiff.center, cardiff.zoom);
-}
-
-function travelToLandmark(landmark: Landmark) {
-  setMapView(landmark.position, 13);
-  // TODO: set details panel
 }
