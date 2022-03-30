@@ -9,13 +9,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     http_response_code(400);
 }
 
-    id int not null primary key auto_increment,
-    name varchar(120) not null,
-    lat float not null,
-    lng float not null,
-    thumb varchar(255) not null,
-    desc_ varchar(3000) not null
-function get_landmark()
+function get_landmarks()
 {
   $db = get_or_create_db_connection();
   $result = $db->query("select * from landmark");
