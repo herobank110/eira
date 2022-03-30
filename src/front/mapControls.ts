@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { cardiff } from "./eiraAPI";
+import { cardiff, Landmark } from "./eiraAPI";
 import { getMapsAPI, MapsAPI } from "./mapsAPI";
 
 type LatLng = MapsAPI.LatLngLiteral;
@@ -24,4 +24,8 @@ export async function setMapCenter(center: LatLng, zoom: number) {
   const map = await getOrCreateMap();
   map.setCenter(center);
   map.setZoom(zoom);
+}
+
+export function travelToLandmark(landmark: Landmark) {
+  setMapCenter(landmark.position, 13);
 }
