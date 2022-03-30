@@ -24,19 +24,34 @@
             </button>
             <ul id="landmarks-list" class="dropdown-menu"></ul>
         </div>
-        <button class="btn btn-light">RSS Feed</button>
+        <button class="btn btn-light" data-mdb-toggle="modal" data-mdb-target="#rss-modal">RSS Feed</button>
+
     </nav>
     <main id="map-root"></main>
     <div id="details-panel" class="offcanvas offcanvas-start" tabindex="-1">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title"></h5>
-            <button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
+            <button class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="details-panel--thumb shadow-2-strong"></div>
             <p class="details-panel--desc"></p>
         </div>
     </div>
+    <div class="modal modal-center fade" id="rss-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">RSS Feed</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
