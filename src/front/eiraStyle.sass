@@ -2,17 +2,27 @@
 
 // single page layout
 
-#title-root
-    position: absolute
-    top: 25px
-    right: 50px
-    background: #aebbd2cc
-    color: white
-    border-radius: 4px
-    padding: 0.5rem 1.5rem
-    &>h1
-        margin: 0
-        user-select: none
+$navbarHeight: 100px
+
+#navbar
+    padding: 1rem
+    height: $navbarHeight
+    display: flex
+    align-items: center
+    column-gap: 1rem
+
+    #title-root
+        background: #aebbd2cc
+        color: white
+        border-radius: 4px
+        padding: 0.5rem 1.5rem
+        width: fit-content
+        &>h1
+            margin: 0
+            user-select: none
+
+#map-root
+    height: calc(100vh - $navbarHeight)
 
 #details-panel
     & .details-panel--thumb
