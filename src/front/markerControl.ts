@@ -1,20 +1,22 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { showDetailsPanel } from "./detailsPanel";
 import { Landmark } from "./eiraAPI";
-import { getMapsAPI, MapsMap, MapsMarker, MapsMouseEvent } from "./mapsAPI";
+import { getMapsAPI, MapsAPI } from "./mapsAPI";
 
 let g_tooltip: TippyInstance | undefined;
 
-export async function addMarker(map: MapsMap, landmark: Landmark) {
+export async function addMarker(map: MapsAPI.Map, landmark: Landmark) {
   const mapsAPI = await getMapsAPI();
   const marker = new mapsAPI.Marker({ map, position: landmark.position });
   registerMarkerInteraction(marker, landmark);
 }
 
-function registerMarkerInteraction(marker: MapsMarker, landmark: Landmark) {
+function registerMarkerInteraction(marker: MapsAPI.Marker, landmark: Landmark) {
   marker.addListener("click", () => showPlaceDetails(landmark));
-  marker.addListener("mouseover", (e: MapsMouseEvent) => {
-    addTooltip(landmark.name, e.domEvent.clientX, e.domEvent.clientY);
+  marker.addListener("mouseover", (e: MapsAPI.MapMouseEvent) => {
+    // @ts-ignore click event always has clientX and Y
+    const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
+    addTooltip(landmark.name, x, y);
   });
   marker.addListener("mouseout", removeTooltip);
 }
@@ -45,6 +47,7 @@ function addTooltip(name: string, x: number, y: number) {
 
   // set initial position - required since adding to body it always puts at (0, 0)
   const el = document.getElementById("tippy-" + tooltip.id);
+  if (!el) throw new Error("Couldn't find tooltip element");
   setTimeout(() => {
     el.style.transform = `translate3d(${x}px, ${y}px, 0px)`;
   }, 0);
