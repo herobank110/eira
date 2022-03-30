@@ -14,6 +14,7 @@ async function main() {
     center: cardiff.center,
     zoom: cardiff.zoom,
     mapId: "3f60a325ef504f09",
+    disableDefaultUI: true,
   });
 
   for (const markerData of markers) {
