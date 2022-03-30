@@ -20,7 +20,7 @@ el.append(
 
 $("#rss-url").text(window.location.origin + "/api/rss.php");
 
-// main();
+main();
 
 async function main() {
   const mapsAPI = await getMapsAPI();
