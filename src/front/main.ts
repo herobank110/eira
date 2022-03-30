@@ -1,4 +1,3 @@
-
 import $ from "jquery";
 import { cardiff, getLandmarks } from "./eiraAPI";
 import { getMapsAPI } from "./mapsAPI";
@@ -31,11 +30,10 @@ async function main() {
     zoom: cardiff.zoom,
     mapId: "3f60a325ef504f09",
     disableDefaultUI: true,
-    panControl: true,
   });
 
   $("#buttton-reset").on("click", () => {
-    map.panTo(cardiff.center);
+    map.setCenter(cardiff.center);
     map.setZoom(cardiff.zoom);
   });
 
