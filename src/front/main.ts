@@ -5,22 +5,6 @@ import { registerMarkerInteraction } from "./markerControl";
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
 
-// setTimeout(() => {
-//   let a = tippy(document.body, {
-//     followCursor: true,
-//     content: "hello there",
-//     plugins: [followCursor],
-//     showOnCreate: true,
-//     placement: "bottom",
-//     offset: [0, 20],
-//     arrow: false,
-//   });
-//   const el = document.getElementById("tippy-" + a.id);
-//   setTimeout(() => {
-//     el.style.transform = "translate3d(100px, 100px, 0px)";
-//   }, 0);
-// }, 2000);
-
 main();
 
 async function main() {
