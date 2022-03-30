@@ -42,7 +42,8 @@ async function main() {
     mapMarker.addListener("mouseover", (e: any) => {
       const tooltip = tippy(document.body, {
         followCursor: true,
-        content: markerData.name,
+        content: `<span style="text-align: center;">${markerData.name}<br><em>Click for details</em></span>`,
+        allowHTML: true,
         plugins: [followCursor],
         showOnCreate: true,
         placement: "bottom",
