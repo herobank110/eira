@@ -1,3 +1,4 @@
+import { Offcanvas } from "mdb-ui-kit";
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { MarkerData } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
@@ -19,6 +20,11 @@ function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
     addTooltip(data.name, e.domEvent.clientX, e.domEvent.clientY);
   });
   gui.addListener("mouseout", removeTooltip);
+}
+
+function showDetails() {
+  let a = new Offcanvas(document.getElementById("details-panel"));
+  a.toggle();
 }
 
 function addTooltip(name: string, x: number, y: number) {
