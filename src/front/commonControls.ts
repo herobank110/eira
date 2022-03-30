@@ -12,5 +12,6 @@ export function travelToLandmark(landmark: Landmark) {
 }
 
 function showPlaceDetails(landmark: Landmark) {
-  showDetailsPanel({ ...landmark, title: landmark.name });
+  const desc = `<p>${landmark.desc.replace("Fun fact - ", "</p><p>Fun fact -")}</p>`;
+  showDetailsPanel({ desc, title: landmark.name, thumb: landmark.thumb });
 }
