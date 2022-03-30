@@ -1,7 +1,7 @@
 import { cardiff, markers } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
-import tippy, { followCursor } from "tippy.js";
+import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import "tippy.js/dist/tippy.css";
 // setTimeout(() => {
 //   let a = tippy(document.body, {
@@ -36,11 +36,31 @@ async function main() {
       position: markerData.position,
     });
     mapMarker.addListener("click", () => console.log("click", markerData.name));
-    mapMarker.addListener("mouseover", (e) =>
-      console.log("mouseover", markerData.name, e)
-    );
-    mapMarker.addListener("mouseout", () =>
-      console.log("mouseout", markerData.name)
-    );
+
+    let lastTooltip: TippyInstance | null = null;
+
+    mapMarker.addListener("mouseover", (e: any) => {
+      const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
+      const tooltip = tippy(document.body, {
+        followCursor: true,
+        content: markerData.name,
+        plugins: [followCursor],
+        showOnCreate: true,
+        placement: "bottom",
+        offset: [0, 20],
+        arrow: false,
+      });
+      const el = document.getElementById("tippy-" + tooltip.id);
+      setTimeout(() => {
+        el.style.transform = `translate3d(${x}px, ${y}px, 0px)`;
+      }, 0);
+      lastTooltip = tooltip;
+    });
+    mapMarker.addListener("mouseout", () => {
+      if (lastTooltip) {
+        lastTooltip.hide();
+        setTimeout(lastTooltip.destroy, 200);
+      }
+    });
   }
 }
