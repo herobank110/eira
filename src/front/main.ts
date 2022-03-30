@@ -5,7 +5,7 @@ import { addMarker } from "./markerControl";
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
 
-main();
+// main();
 
 async function main() {
   const mapsAPI = await getMapsAPI();
@@ -21,3 +21,14 @@ async function main() {
     addMarker(map, markerData);
   }
 }
+
+import { Offcanvas } from "mdb-ui-kit"; // lib
+let a = new Offcanvas(document.getElementById("offcanvasExample"));
+document.body.onclick = () => {
+  if (a) {
+    a.toggle();
+    a = null;
+  }
+};
+
+// console.log(Offcanvas);
