@@ -5,8 +5,7 @@ import { addMarker } from "./markerControl";
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
 
-// main();
-getLandmarks().then(console.log)
+main();
 
 async function main() {
   const mapsAPI = await getMapsAPI();
@@ -18,7 +17,8 @@ async function main() {
     disableDefaultUI: true,
   });
 
-  for (const markerData of markers) {
-    addMarker(map, markerData);
+  const landmarks = await getLandmarks();
+  for (const landmark of landmarks) {
+    addMarker(map, landmark);
   }
 }

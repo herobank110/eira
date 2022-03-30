@@ -1,29 +1,30 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { showDetailsPanel } from "./detailsPanel";
-import { MarkerData } from "./locations";
+import { Landmark } from "./eiraAPI";
 import { getMapsAPI } from "./mapsAPI";
 
 type MapsMarker = google.maps.Marker;
+type MapsMap = google.maps.Map;
 type MapsMouseEvent = { domEvent: MouseEvent };
 
 let g_tooltip: TippyInstance | undefined;
 
-export async function addMarker(map: google.maps.Map, data: MarkerData) {
+export async function addMarker(map: MapsMap, landmark: Landmark) {
   const mapsAPI = await getMapsAPI();
-  const markerGUI = new mapsAPI.Marker({ map, position: data.position });
-  registerMarkerInteraction(markerGUI, data);
+  const marker = new mapsAPI.Marker({ map, position: landmark.position });
+  registerMarkerInteraction(marker, landmark);
 }
 
-function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
-  gui.addListener("click", () => showPlaceDetails(data));
-  gui.addListener("mouseover", (e: MapsMouseEvent) => {
-    addTooltip(data.name, e.domEvent.clientX, e.domEvent.clientY);
+function registerMarkerInteraction(marker: MapsMarker, landmark: Landmark) {
+  marker.addListener("click", () => showPlaceDetails(landmark));
+  marker.addListener("mouseover", (e: MapsMouseEvent) => {
+    addTooltip(landmark.name, e.domEvent.clientX, e.domEvent.clientY);
   });
-  gui.addListener("mouseout", removeTooltip);
+  marker.addListener("mouseout", removeTooltip);
 }
 
-function showPlaceDetails(data: MarkerData) {
-  showDetailsPanel({ ...data, title: data.name });
+function showPlaceDetails(landmark: Landmark) {
+  showDetailsPanel({ ...landmark, title: landmark.name });
 }
 
 function addTooltip(name: string, x: number, y: number) {
