@@ -1,4 +1,5 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
+import { travelToLandmark } from "./commonControls";
 import { showDetailsPanel } from "./detailsPanel";
 import { Landmark } from "./eiraAPI";
 import { getMapsAPI, MapsAPI } from "./mapsAPI";
@@ -12,17 +13,13 @@ export async function addMarker(map: MapsAPI.Map, landmark: Landmark) {
 }
 
 function registerMarkerInteraction(marker: MapsAPI.Marker, landmark: Landmark) {
-  marker.addListener("click", () => showPlaceDetails(landmark));
+  marker.addListener("click", () => travelToLandmark(landmark));
   marker.addListener("mouseover", (e: MapsAPI.MapMouseEvent) => {
     // @ts-ignore click event always has clientX and Y
     const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
     addTooltip(landmark.name, x, y);
   });
   marker.addListener("mouseout", removeTooltip);
-}
-
-function showPlaceDetails(landmark: Landmark) {
-  showDetailsPanel({ ...landmark, title: landmark.name });
 }
 
 function addTooltip(name: string, x: number, y: number) {

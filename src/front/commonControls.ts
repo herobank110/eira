@@ -1,3 +1,4 @@
+import { showDetailsPanel } from "./detailsPanel";
 import { cardiff, Landmark } from "./eiraAPI";
 import { setMapView } from "./mapControls";
 
@@ -7,5 +8,9 @@ export function resetMapView() {
 
 export function travelToLandmark(landmark: Landmark) {
   setMapView(landmark.position, 13);
-  // TODO: set details panel
+  showPlaceDetails(landmark);
+}
+
+function showPlaceDetails(landmark: Landmark) {
+  showDetailsPanel({ ...landmark, title: landmark.name });
 }
