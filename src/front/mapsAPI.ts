@@ -1,3 +1,5 @@
+/** @file helpers for google maps API */
+
 import { Loader } from "@googlemaps/js-api-loader";
 
 export type MapsAPI = typeof google.maps;
