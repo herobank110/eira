@@ -12,7 +12,9 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.13.10",
     "@types/google.maps": "^3.48.3",
+    "@types/jquery": "^3.5.14",
     "fs-extra": "^10.0.1",
+    "jquery": "^3.6.0",
     "mdb-ui-kit": "^3.11.0",
     "parcel": "^2.4.0",
     "tippy.js": "^6.3.7",
