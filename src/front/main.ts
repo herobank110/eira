@@ -18,7 +18,9 @@ el.append(
   )
 );
 
-main();
+$("#rss-url").text(window.location.origin + "/api/rss.php");
+
+// main();
 
 async function main() {
   const mapsAPI = await getMapsAPI();
