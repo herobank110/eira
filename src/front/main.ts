@@ -26,8 +26,6 @@ async function main() {
   const map = await getOrCreateMap();
 
   $("#buttton-reset").on("click", () => {
-    map.setCenter(cardiff.center);
-    map.setZoom(cardiff.zoom);
   });
 
   const landmarks = await getLandmarks();
