@@ -3,6 +3,9 @@ import { getMapsAPI } from "./mapsAPI";
 
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import "tippy.js/dist/tippy.css";
+
+import "./eiraStyle.sass";
+
 // setTimeout(() => {
 //   let a = tippy(document.body, {
 //     followCursor: true,
@@ -42,7 +45,7 @@ async function main() {
     mapMarker.addListener("mouseover", (e: any) => {
       const tooltip = tippy(document.body, {
         followCursor: true,
-        content: `<span class="marker-tooltip">${markerData.name}<br><em>Click for details</em></span>`,
+        content: `<span class="marker-tooltip">${markerData.name}</span>`,
         allowHTML: true,
         plugins: [followCursor],
         showOnCreate: true,
@@ -50,6 +53,12 @@ async function main() {
         offset: [0, 20],
         arrow: false,
       });
+      // for better UX let the user figure out they can click marker but show a hint after a delay
+      setTimeout(() => {
+        tooltip.setContent(
+          `<span class="marker-tooltip">${markerData.name}<br><em>Click for details</em></span>`
+        );
+      }, 3000);
 
       // set initial position - required since adding to body it always puts at (0, 0)
       const el = document.getElementById("tippy-" + tooltip.id);
