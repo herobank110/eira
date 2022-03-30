@@ -7,7 +7,7 @@ type DetailsPanelProps = {
   desc: string;
 };
 
-export function openDetailsPanel(props: DetailsPanelProps) {
+export function showDetailsPanel(props: DetailsPanelProps) {
   const el = $("#details-panel");
   el.find(".offcanvas-title").text(props.title);
   el.find(".details-panel--thumb").css(

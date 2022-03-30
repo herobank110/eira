@@ -1,5 +1,5 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
-import { openDetailsPanel } from "./detailsPanel";
+import { showDetailsPanel } from "./detailsPanel";
 import { MarkerData } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
@@ -15,15 +15,15 @@ export async function addMarker(map: google.maps.Map, data: MarkerData) {
 }
 
 function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
-  gui.addListener("click", () => showDetails(data));
+  gui.addListener("click", () => showPlaceDetails(data));
   gui.addListener("mouseover", (e: MapsMouseEvent) => {
     addTooltip(data.name, e.domEvent.clientX, e.domEvent.clientY);
   });
   gui.addListener("mouseout", removeTooltip);
 }
 
-function showDetails(data: MarkerData) {
-  openDetailsPanel({ ...data, title: data.name });
+function showPlaceDetails(data: MarkerData) {
+  showDetailsPanel({ ...data, title: data.name });
 }
 
 function addTooltip(name: string, x: number, y: number) {
