@@ -25,12 +25,10 @@ main();
 async function main() {
   const map = await getOrCreateMap();
 
-  $("#buttton-reset").on("click", () => {
-  });
+  $("#buttton-reset").on("click", () => {});
 
   const landmarks = await getLandmarks();
   for (const landmark of landmarks) {
     addMarker(map, landmark);
   }
 }
-
