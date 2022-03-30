@@ -38,8 +38,14 @@ function addTooltip(name: string, x: number, y: number) {
     offset: [0, 20],
     arrow: false,
   });
+
   // for better UX let the user figure out they can click marker but show a hint after a delay
-  setTimeout(() => tooltip.setContent(getTooltipContent(name, true)), 3000);
+  setTimeout(() => {
+    // only if the tooltip is still active!
+    if (g_tooltip === tooltip) {
+      tooltip.setContent(getTooltipContent(name, true));
+    }
+  }, 3000);
 
   // set initial position - required since adding to body it always puts at (0, 0)
   const el = document.getElementById("tippy-" + tooltip.id);
