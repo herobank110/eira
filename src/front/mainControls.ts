@@ -1,16 +1,19 @@
 import $ from "jquery";
-import { cardiff, Landmark } from "./eiraAPI";
-import { setMapView } from "./mapControls";
+import { cardiff, getLandmarks, Landmark } from "./eiraAPI";
+import { getOrCreateMap, setMapView } from "./mapControls";
+import { addMarker } from "./markerControl";
 
-export function travelToLandmark(landmark: Landmark) {
-  setMapView(landmark.position, 13);
-  // TODO: set details panel
-}
-
-export function initGUI() {
+export async function initGUI() {
   bindReset();
   setRSSFeedURL();
   populateLandmarksList();
+
+  const map = await getOrCreateMap();
+
+  const landmarks = await getLandmarks();
+  for (const landmark of landmarks) {
+    addMarker(map, landmark);
+  }
 }
 
 function bindReset() {
@@ -35,4 +38,9 @@ function populateLandmarksList() {
       )
     )
   );
+}
+
+function travelToLandmark(landmark: Landmark) {
+  setMapView(landmark.position, 13);
+  // TODO: set details panel
 }
