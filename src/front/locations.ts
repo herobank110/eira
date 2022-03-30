@@ -1,6 +1,11 @@
 export const cardiff = { center: { lng: -3.18, lat: 51.48 }, zoom: 12 };
 
-export const markers = [
+export type MarkerData = {
+  name: string;
+  position: google.maps.LatLngLiteral;
+};
+
+export const markers: MarkerData[] = [
   {
     name: "Cardiff Bay",
     position: { lat: 51.4539, lng: -3.1694 },
