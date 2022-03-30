@@ -31,9 +31,16 @@ async function main() {
   });
 
   for (const markerData of markers) {
-    const mapMarker = new mapsAPI.Marker({ map, position: markerData.position });
-    mapMarker.addListener("click", () => console.log("click"));
-    mapMarker.addListener("mouseover", () => console.log("mouseover"));
-    mapMarker.addListener("mouseout", () => console.log("mouseout"));
+    const mapMarker = new mapsAPI.Marker({
+      map,
+      position: markerData.position,
+    });
+    mapMarker.addListener("click", () => console.log("click", markerData.name));
+    mapMarker.addListener("mouseover", (e) =>
+      console.log("mouseover", markerData.name, e)
+    );
+    mapMarker.addListener("mouseout", () =>
+      console.log("mouseout", markerData.name)
+    );
   }
 }
