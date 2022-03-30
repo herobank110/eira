@@ -1,5 +1,4 @@
 import $ from "jquery";
-import { cardiff } from "./eiraAPI";
 import { getMapsAPI, MapsAPI } from "./mapsAPI";
 
 type LatLng = MapsAPI.LatLngLiteral;
@@ -10,8 +9,6 @@ export async function getOrCreateMap() {
   if (!g_map) {
     const mapsAPI = await getMapsAPI();
     const map = new mapsAPI.Map($("#map-root")[0], {
-      center: cardiff.center,
-      zoom: cardiff.zoom,
       mapId: "3f60a325ef504f09",
       disableDefaultUI: true,
     });

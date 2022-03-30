@@ -15,15 +15,14 @@ export async function initGUI() {
   setRSSFeedURL();
 
   // prepare map for use
+  resetMapView();
   for (const landmark of landmarks) {
     addMarker(map, landmark);
   }
 }
 
 function bindButtonReset() {
-  $("#buttton-reset").on("click", () => {
-    setMapView(cardiff.center, cardiff.zoom);
-  });
+  $("#buttton-reset").on("click", resetMapView);
 }
 
 function setRSSFeedURL() {
@@ -42,6 +41,10 @@ function populateLandmarksList(landmarks: Landmark[]) {
       )
     )
   );
+}
+
+function resetMapView() {
+  setMapView(cardiff.center, cardiff.zoom);
 }
 
 function travelToLandmark(landmark: Landmark) {
