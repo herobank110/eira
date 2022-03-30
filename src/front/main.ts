@@ -40,7 +40,6 @@ async function main() {
     let lastTooltip: TippyInstance | null = null;
 
     mapMarker.addListener("mouseover", (e: any) => {
-      const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
       const tooltip = tippy(document.body, {
         followCursor: true,
         content: markerData.name,
@@ -50,10 +49,15 @@ async function main() {
         offset: [0, 20],
         arrow: false,
       });
+
+      // set initial position - required since adding to body it always puts at (0, 0)
       const el = document.getElementById("tippy-" + tooltip.id);
+      const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
       setTimeout(() => {
         el.style.transform = `translate3d(${x}px, ${y}px, 0px)`;
       }, 0);
+
+      // save for destruction
       lastTooltip = tooltip;
     });
     mapMarker.addListener("mouseout", () => {
