@@ -2,26 +2,23 @@ import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { MarkerData } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
-type MarkerType = google.maps.Marker;
-type MapsMouseOverEvent = { domEvent: MouseEvent };
+type MapsMarker = google.maps.Marker;
+type MapsMouseEvent = { domEvent: MouseEvent };
 
 let g_tooltip: TippyInstance | undefined;
 
-export async function addMarker(map: google.maps.Map, markerData: MarkerData) {
+export async function addMarker(map: google.maps.Map, data: MarkerData) {
   const mapsAPI = await getMapsAPI();
-  const mapMarker = new mapsAPI.Marker({ map, position: markerData.position });
-  registerMarkerInteraction(mapMarker, markerData);
+  const markerGUI = new mapsAPI.Marker({ map, position: data.position });
+  registerMarkerInteraction(markerGUI, data);
 }
 
-function registerMarkerInteraction(
-  mapMarker: MarkerType,
-  markerData: MarkerData
-) {
-  mapMarker.addListener("click", () => console.log("click", markerData.name));
-  mapMarker.addListener("mouseover", (e: MapsMouseOverEvent) => {
-    addTooltip(markerData.name, e.domEvent.clientX, e.domEvent.clientY);
+function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
+  gui.addListener("click", () => console.log("click", data.name));
+  gui.addListener("mouseover", (e: MapsMouseEvent) => {
+    addTooltip(data.name, e.domEvent.clientX, e.domEvent.clientY);
   });
-  mapMarker.addListener("mouseout", removeTooltip);
+  gui.addListener("mouseout", removeTooltip);
 }
 
 function addTooltip(name: string, x: number, y: number) {
