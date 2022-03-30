@@ -7,7 +7,7 @@ export function resetMapView() {
 }
 
 export function travelToLandmark(landmark: Landmark) {
-  setMapView(landmark.position, 13);
+  setMapView(landmark.position, 15);
   showPlaceDetails(landmark);
 }
 
