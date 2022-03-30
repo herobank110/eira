@@ -1,6 +1,5 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { travelToLandmark } from "./commonControls";
-import { showDetailsPanel } from "./detailsPanel";
 import { Landmark } from "./eiraAPI";
 import { getMapsAPI, MapsAPI } from "./mapsAPI";
 
