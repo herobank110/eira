@@ -5,8 +5,13 @@
 $navbarHeight: 100px
 
 #navbar
-    padding: 1rem
+    background: white
+    position: fixed
+    top: 0px
+    width: 100vw
     height: $navbarHeight
+    z-index: 9999
+    padding: 1rem
     display: flex
     flex-direction: row
     align-items: center
@@ -27,6 +32,7 @@ $navbarHeight: 100px
 
 
 #map-root
+    margin-top: $navbarHeight
     height: calc(100vh - $navbarHeight)
 
 #details-panel
