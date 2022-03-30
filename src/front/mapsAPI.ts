@@ -1,13 +1,13 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
-const apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
+type MapsAPI = typeof google.maps;
 
-export type MapsAPI = typeof google.maps;
+const g_apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
 let g_API: MapsAPI | undefined;
 
 export async function getMapsAPI() {
   if (!g_API) {
-    const loader = new Loader({ apiKey });
+    const loader = new Loader({ apiKey: g_apiKey });
     try {
       g_API = (await loader.load()).maps;
     } catch (error) {
