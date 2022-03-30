@@ -16,6 +16,7 @@ export async function getLandmarks() {
   try {
     return (await $.getJSON("api/landmarks.php")) as Landmark[];
   } catch (error) {
-    console.error("Couldn't get landmarks", error);
+    console.error("Couldn't get landmarks");
+    throw error;
   }
 }
