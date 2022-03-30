@@ -25,9 +25,9 @@ function get_landmarks()
       "desc" => $row["desc_"],
     ];
   }
+  echo json_encode($json ?? []);
 
   header("Content-Type: application/json");
   $max_age = 60 * 60 * 24;
   header("Cache-control: max-age=$max_age");
-  echo json_encode($json ?? []);
 }
