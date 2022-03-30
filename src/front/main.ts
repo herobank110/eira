@@ -1,6 +1,6 @@
 import { cardiff, markers } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
-import { registerMarkerInteraction } from "./markerControl";
+import { addMarker } from "./markerControl";
 
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
@@ -17,10 +17,6 @@ async function main() {
   });
 
   for (const markerData of markers) {
-    const mapMarker = new mapsAPI.Marker({
-      map,
-      position: markerData.position,
-    });
-    registerMarkerInteraction(mapMarker, markerData.name);
+    addMarker(map, markerData);
   }
 }
