@@ -12,8 +12,19 @@
 
 <body>
     <nav id="navbar" class="shadow-4-strong">
-        <div id="title-root">
+        <div class="navbar--title">
             <h1>Cardiff Landmarks</h1>
+        </div>
+        <div class="navbar--select dropdown">
+            <button class="btn btn-light shadow-0 dropdown-toggle" type="button" data-mdb-toggle="dropdown"
+                aria-expanded="false">
+                jump to landmark
+            </button>
+            <ul id="landmarks-list" class="dropdown-menu">
+                <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
         </div>
     </nav>
     <main id="map-root"></main>

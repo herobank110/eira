@@ -8,10 +8,10 @@ $navbarHeight: 100px
     padding: 1rem
     height: $navbarHeight
     display: flex
+    flex-direction: row
     align-items: center
     column-gap: 1rem
-
-    #title-root
+    &>.navbar--title
         background: #aebbd2cc
         color: white
         border-radius: 4px
@@ -20,6 +20,11 @@ $navbarHeight: 100px
         &>h1
             margin: 0
             user-select: none
+    // &>.navbar--select
+    //     &>.button
+
+            
+
 
 #map-root
     height: calc(100vh - $navbarHeight)

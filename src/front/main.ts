@@ -1,9 +1,22 @@
+import $ from "jquery";
 import { cardiff, getLandmarks } from "./eiraAPI";
 import { getMapsAPI } from "./mapsAPI";
 import { addMarker } from "./markerControl";
 
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
+
+const el = $("#landmarks-list");
+el.append(
+  ...[1, 2, 3].map((i) =>
+    $("<li>").append(
+      $("<button>", {
+        class: "dropdown-item",
+        text: "Action " + i,
+      }).on("click", () => console.log("hi", i))
+    )
+  )
+);
 
 main();
 
