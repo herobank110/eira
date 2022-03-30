@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Offcanvas } from "mdb-ui-kit";
 import $ from "jquery";
 
@@ -14,7 +15,7 @@ export function showDetailsPanel(props: DetailsPanelProps) {
     "background-image",
     `url('${props.thumb}')`
   );
-  el.find(".details-panel--desc").text(props.desc);
+  el.find(".details-panel--desc").html(props.desc);
 
   const offcanvas = new Offcanvas(el[0]);
   offcanvas.show();
