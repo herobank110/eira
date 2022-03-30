@@ -1,9 +1,18 @@
 @import '../../node_modules/mdb-ui-kit/css/mdb.min.css'
 
-.marker-tooltip
-    font-family: var(--mdb-font-roboto)
-    &>em
-        font-size: 0.8rem
+// single page layout
+
+#title-root
+    position: absolute
+    top: 25px
+    right: 50px
+    background: #aebbd2cc
+    color: white
+    border-radius: 4px
+    padding: 0.5rem 1.5rem
+    &>h1
+        margin: 0
+        user-select: none
 
 #details-panel
     & .details-panel--thumb
@@ -13,3 +22,10 @@
         border-radius: 4px
     & .details-panel--desc
         margin-top: 2em
+
+// interaction
+
+.marker-tooltip
+    font-family: var(--mdb-font-roboto)
+    &>em
+        font-size: 0.8rem
