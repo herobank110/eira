@@ -32,6 +32,11 @@ async function main() {
     disableDefaultUI: true,
   });
 
+  $("#buttton-reset").on("click", () => {
+    map.setCenter(cardiff.center);
+    map.setZoom(cardiff.zoom);
+  });
+
   const landmarks = await getLandmarks();
   for (const landmark of landmarks) {
     addMarker(map, landmark);
