@@ -1,11 +1,12 @@
-import { cardiff, markers } from "./locations";
+import { cardiff, getLandmarks } from "./eiraAPI";
 import { getMapsAPI } from "./mapsAPI";
 import { addMarker } from "./markerControl";
 
 import "tippy.js/dist/tippy.css";
 import "./eiraStyle.sass";
 
-main();
+// main();
+getLandmarks().then(console.log)
 
 async function main() {
   const mapsAPI = await getMapsAPI();
