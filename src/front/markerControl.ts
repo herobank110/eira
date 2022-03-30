@@ -1,11 +1,7 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 import { showDetailsPanel } from "./detailsPanel";
 import { Landmark } from "./eiraAPI";
-import { getMapsAPI } from "./mapsAPI";
-
-type MapsMarker = google.maps.Marker;
-type MapsMap = google.maps.Map;
-type MapsMouseEvent = { domEvent: MouseEvent };
+import { getMapsAPI, MapsMap, MapsMarker, MapsMouseEvent } from "./mapsAPI";
 
 let g_tooltip: TippyInstance | undefined;
 

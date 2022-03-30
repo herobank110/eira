@@ -1,6 +1,9 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
-type MapsAPI = typeof google.maps;
+export type MapsAPI = typeof google.maps;
+export type MapsMouseEvent = { domEvent: MouseEvent };
+export type MapsMap = google.maps.Map;
+export type MapsMarker = google.maps.Marker
 
 const g_apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
 let g_API: MapsAPI | undefined;
