@@ -2,7 +2,7 @@ import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
 
 type MarkerType = google.maps.Marker;
 
-let g_tooltip: TippyInstance | null = null;
+let g_tooltip: TippyInstance | undefined;
 
 export function registerMarkerInteraction(marker: MarkerType, name: string) {
   marker.addListener("click", () => console.log("click", name));
@@ -32,16 +32,19 @@ export function registerMarkerInteraction(marker: MarkerType, name: string) {
     g_tooltip = tooltip;
   });
 
-  marker.addListener("mouseout", () => {
-    if (g_tooltip) {
-      g_tooltip.hide();
-      setTimeout(g_tooltip.destroy, 200);
-    }
-  });
+  marker.addListener("mouseout", removeTooltip);
 }
 function getTooltipContent(name: string, hint: boolean) {
   return `<span class="marker-tooltip">
   ${name}
   ${hint ? "<br><em>Click for details</em>" : ""}
   </span>`;
+}
+
+function removeTooltip() {
+  if (g_tooltip) {
+    g_tooltip.hide();
+    setTimeout(g_tooltip.destroy, 200);
+    g_tooltip = undefined;
+  }
 }
