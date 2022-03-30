@@ -23,7 +23,7 @@ function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
 }
 
 function showDetails(data: MarkerData) {
- setDetails({title: "hello", desc: "", thumbnail: ""})
+ setDetails({ ...data, title: data.name });
 }
 
 function addTooltip(name: string, x: number, y: number) {
