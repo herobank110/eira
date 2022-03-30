@@ -3,6 +3,8 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
 // namespace alias
+var google = {maps: null};
+// @ts-ignore
 export import MapsAPI = google.maps;
 
 const g_apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
