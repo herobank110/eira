@@ -1,5 +1,5 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
-import { setDetails } from "./detailsPanel";
+import { openDetailsPanel } from "./detailsPanel";
 import { MarkerData } from "./locations";
 import { getMapsAPI } from "./mapsAPI";
 
@@ -23,7 +23,7 @@ function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
 }
 
 function showDetails(data: MarkerData) {
- setDetails({ ...data, title: data.name });
+  openDetailsPanel({ ...data, title: data.name });
 }
 
 function addTooltip(name: string, x: number, y: number) {
