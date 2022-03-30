@@ -23,7 +23,7 @@ $xml = "
  <title>Cardiff Landmarks</title>
  <description>My RSS Feed!</description>
  <link>http://eira.mooo.com</link>
- <copyright>2020 Example.com All rights reserved</copyright>
+ <copyright>All rights reserved</copyright>
  <lastBuildDate>Mon, 06 Sep 2010 00:01:00 +0000</lastBuildDate>
  <pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
  <ttl>1800</ttl>
