@@ -1,8 +1,10 @@
 import $ from "jquery";
 import { cardiff } from "./eiraAPI";
-import { getMapsAPI, MapsMap } from "./mapsAPI";
+import { getMapsAPI, MapsAPI } from "./mapsAPI";
 
-let g_map: MapsMap | undefined;
+type LatLng = MapsAPI.LatLngLiteral;
+
+let g_map: MapsAPI.Map | undefined;
 
 export async function getOrCreateMap() {
   if (!g_map) {
@@ -18,6 +20,8 @@ export async function getOrCreateMap() {
   return g_map;
 }
 
-export async function setMapCenter() {
-  // TODO:
+export async function setMapCenter(center: LatLng, zoom: number) {
+  const map = await getOrCreateMap();
+  map.setCenter(center);
+  map.setZoom(zoom);
 }
