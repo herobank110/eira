@@ -2,13 +2,11 @@
 
 import { Loader } from "@googlemaps/js-api-loader";
 
-export type MapsAPI = typeof google.maps;
-export type MapsMouseEvent = { domEvent: MouseEvent };
-export type MapsMap = google.maps.Map;
-export type MapsMarker = google.maps.Marker
+// namespace alias
+export import MapsAPI = google.maps;
 
 const g_apiKey = "AIzaSyBb5wFapnvB4Z1lN9OA1ruUW6eQ65YebmU";
-let g_API: MapsAPI | undefined;
+let g_API: typeof MapsAPI | undefined;
 
 export async function getMapsAPI() {
   if (!g_API) {
@@ -16,7 +14,8 @@ export async function getMapsAPI() {
     try {
       g_API = (await loader.load()).maps;
     } catch (error) {
-      console.error(`Failed to load maps API: ${error}`);
+      console.error("Failed to load maps API");
+      throw error;
     }
   }
   return g_API;
