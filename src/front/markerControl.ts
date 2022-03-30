@@ -15,14 +15,14 @@ export async function addMarker(map: google.maps.Map, data: MarkerData) {
 }
 
 function registerMarkerInteraction(gui: MapsMarker, data: MarkerData) {
-  gui.addListener("click", () => console.log("click", data.name));
+  gui.addListener("click", () => showDetails(data));
   gui.addListener("mouseover", (e: MapsMouseEvent) => {
     addTooltip(data.name, e.domEvent.clientX, e.domEvent.clientY);
   });
   gui.addListener("mouseout", removeTooltip);
 }
 
-function showDetails() {
+function showDetails(data: MarkerData) {
   let a = new Offcanvas(document.getElementById("details-panel"));
   a.toggle();
 }
