@@ -20,7 +20,7 @@ export async function getOrCreateMap() {
   return g_map;
 }
 
-export async function setMapCenter(center: LatLng, zoom: number) {
+export async function setMapView(center: LatLng, zoom: number) {
   const map = await getOrCreateMap();
   map.setCenter(center);
   map.setZoom(zoom);
