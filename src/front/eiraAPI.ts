@@ -1,13 +1,14 @@
 /** @file API wrapper of project eira backend */
 
 import $ from "jquery";
+import { MapsAPI } from "./mapsAPI";
 
 export const cardiff = { center: { lng: -3.18, lat: 51.48 }, zoom: 13 };
 
 export type Landmark = {
   id: number;
   name: string;
-  position: google.maps.LatLngLiteral;
+  position: MapsAPI.LatLngLiteral;
   thumb: string;
   desc: string;
 };

@@ -3,7 +3,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 
 // namespace alias
-var google = {maps: null};
+var google = { maps: null };
 // @ts-ignore
 export import MapsAPI = google.maps;
 
