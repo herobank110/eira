@@ -2,6 +2,7 @@ import $ from "jquery";
 import { resetMapView, travelToLandmark } from "./commonControls";
 import { getLandmarks, Landmark } from "./eiraAPI";
 import { getOrCreateMap } from "./mapControls";
+import { MapsAPI } from "./mapsAPI";
 import { addMarker } from "./markerControl";
 
 export async function initGUI() {
@@ -9,17 +10,21 @@ export async function initGUI() {
     getOrCreateMap(), // setup google maps widget
     getLandmarks(), // fetch our landmarks
   ]);
+  initMap(map, landmarks);
+  initNavbar(landmarks);
+}
 
-  // navbar controls
-  bindButtonReset();
-  populateLandmarksList(landmarks);
-  setRSSFeedURL();
-
-  // prepare map for use
+function initMap(map: MapsAPI.Map, landmarks: Landmark[]) {
   resetMapView();
   for (const landmark of landmarks) {
     addMarker(map, landmark);
   }
+}
+
+function initNavbar(landmarks: Landmark[]) {
+  bindButtonReset();
+  populateLandmarksList(landmarks);
+  setRSSFeedURL();
 }
 
 function bindButtonReset() {
