@@ -1,7 +1,7 @@
 import tippy, { followCursor, Instance as TippyInstance } from "tippy.js";
-import { travelToLandmark } from "./commonControls";
 import { Landmark } from "./eiraAPI";
 import { getMapsAPI, MapsAPI } from "./mapsAPI";
+import { travelToLandmark } from "./mapControls";
 
 let g_tooltip: TippyInstance | undefined;
 
