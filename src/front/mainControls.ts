@@ -28,7 +28,7 @@ function initNavbar(landmarks: Landmark[]) {
 }
 
 function bindButtonReset() {
-  $("#buttton-reset").on("click", resetMapView);
+  $("#button-reset").on("click", resetMapView);
 }
 
 function setRSSFeedURL() {
