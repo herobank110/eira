@@ -4,7 +4,7 @@ import { getOrCreateMap, resetMapView, travelToLandmark } from "./mapControls";
 import { MapsAPI } from "./mapsAPI";
 import { addMarker } from "./markerControl";
 
-export async function initGUI() {
+export async function startApp() {
   const [map, landmarks] = await Promise.all([
     getOrCreateMap(), // setup google maps widget
     getLandmarks(), // fetch our landmarks
