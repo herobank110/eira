@@ -14,9 +14,8 @@ export async function addMarker(map: MapsAPI.Map, landmark: Landmark) {
 function registerMarkerInteraction(marker: MapsAPI.Marker, landmark: Landmark) {
   marker.addListener("click", () => travelToLandmark(landmark));
   marker.addListener("mouseover", (e: MapsAPI.MapMouseEvent) => {
-    // @ts-ignore click event always has clientX and Y
-    const [x, y] = [e.domEvent.clientX, e.domEvent.clientY];
-    addTooltip(landmark.name, x, y);
+    const domEvent = e.domEvent as MouseEvent;
+    addTooltip(landmark.name, domEvent.clientX, domEvent.clientY);
   });
   marker.addListener("mouseout", removeTooltip);
 }
