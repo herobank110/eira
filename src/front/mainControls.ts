@@ -1,7 +1,6 @@
 import $ from "jquery";
-import { resetMapView, travelToLandmark } from "./commonControls";
 import { getLandmarks, Landmark } from "./eiraAPI";
-import { getOrCreateMap } from "./mapControls";
+import { getOrCreateMap, resetMapView, travelToLandmark } from "./mapControls";
 import { MapsAPI } from "./mapsAPI";
 import { addMarker } from "./markerControl";
 
