@@ -4,6 +4,7 @@
     "module": "ES6",
     "lib": ["ES2015", "DOM"],
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   }
 }
