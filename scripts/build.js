@@ -10,7 +10,7 @@ const api = path.join(prod, "api");
 const res = path.join(prod, "res");
 const src = path.join(REPO_ROOT, "src");
 
-exec(`parcel build --cache-dir="${cache}" --dist-dir="${prod}" --public-url=. ${src}/front/index.html`, { cwd: REPO_ROOT });
+exec(`parcel build --cache-dir="${cache}" --dist-dir="${prod}" --public-url=. "${src}/front/index.html"`, { cwd: REPO_ROOT });
 
 if (!fsExtra.existsSync(api)) {
     console.log('Creating api link');
